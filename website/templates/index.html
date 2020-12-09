@@ -44,28 +44,38 @@
           </div>
       </div>
     </nav>
-    <div id="main-container" class="container-fluid">
-      <div id="content-container" class="container-fluid">
-        <div class='row align-items-center'>
-            <div class='col-md-6 align-items-center'>
-                <a class="main-link" href="{{url_for('software',sub_page='tech-overview')}}">
-                    <div>
-                      <img class="logo mx-auto d-block" src="{{url_for('static',filename='images/dart.svg')}}" alt="DARTS Logo">
-                      <h1 class='text-center'>DARTS</h1>
-                <p>Dynamic and Responsive Targeting System. Optimize your target pool using a multi-armed bandit modified for delayed feedback scenarios.</p>
-                    </div>
-                </a>
-            </div>
-            <div class='col-md-6 align-items-center'>
-                <a class="main-link" href="{{url_for('case_study',sub_page='overview')}}">
-                  <div>
-                  <img class="logo mx-auto d-block" src="{{url_for('static',filename='images/zeppelin.svg')}}" alt="Zeppelin Logo">
-                  <h1 class='text-center'>Case Study</h1>
-                  <p>A case study using DARTS to find conflicted voters for People's Action's Deep Canvassing Campaign in the 2020 United States Presidential Election.</p>
-                  </div>
-                </a>
-            </div>
+    <div id="main-container" class="container">
+      <div class="row">
+        <div class="col text-center">
+          <img class="banner" src="{{url_for('static',filename='images/communication_unbreakdown.png')}}">
         </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p>Our mission is to break down barriers of communication and remove intentionally placed and reinforced biases people have against any particular group. We feel that when people connect and are given a chance to see each other they find they have a lot in common. And when people see each other as having the same hopes and dreams we begin to arrive at solutions for society.</p>
+        <p>Combining cutting-edge data science with innovative grassroots organizing in our project Communication Unbreakdown, we have done just that.</p>
+        <p>Our project has two main components, our software DARTS, and our Case Study working with People's Action.</p>
+        </div>
+      </div>
+      <div class='row align-items-center'>
+          <div class='col-md-6 align-items-center'>
+              <a class="main-link" href="{{url_for('software',sub_page='tech-overview')}}">
+                  <div>
+                    <img class="logo mx-auto d-block" src="{{url_for('static',filename='images/dart.svg')}}" alt="DARTS Logo">
+                    <h1 class='text-center'>DARTS</h1>
+              <p>Dynamic and Responsive Targeting System. Optimize your target pool using a multi-armed bandit modified for delayed feedback scenarios.</p>
+                  </div>
+              </a>
+          </div>
+          <div class='col-md-6 align-items-center'>
+              <a class="main-link" href="{{url_for('case_study',sub_page='overview')}}">
+                <div>
+                <img class="logo mx-auto d-block" src="{{url_for('static',filename='images/zeppelin.svg')}}" alt="Zeppelin Logo">
+                <h1 class='text-center'>Case Study</h1>
+                <p>A case study using DARTS to find conflicted voters for People's Action's Deep Canvassing Campaign in the 2020 United States Presidential Election.</p>
+                </div>
+              </a>
+          </div>
       </div>
     </div>
   <!-- Load Javascript -->

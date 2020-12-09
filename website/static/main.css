@@ -3,6 +3,10 @@
     height: 100%;
 }
 
+.banner {
+    max-width: 100%;
+}
+
 #bg {
     position: fixed; 
     top: 0; 
@@ -57,7 +61,7 @@
 }
 
 .bg-dark {
-    background-color: #6BB1F3 !important;
+    background-color: #385c7f !important;
 }
 
 .param-info {

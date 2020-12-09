@@ -48,8 +48,37 @@
     <div class="container">
       <h1 class="text-center">DARTS Technical Overview</h1>
       <h2>What is DARTS?</h2>
-      <p>DARTS stands for Dynamic and Responsive Targeting System. DARTS couples concepts from multi-armed bandit algorithms modified for delayed feedback scenarios with a mechanism for fairly allocating targets from each arm.</p>
-      <h3>Multi-Armed Bandits</h3>
+      <p>DARTS stands for Dynamic and Responsive Targeting System. It is a system that couples concepts from multi-armed bandit algorithms modified for delayed feedback scenarios with a mechanism for fairly allocating targets from each arm.</p>
+      <p>DARTS operates in a feedback loop where targets are selected and an action is applied (e.g., making a call, showing an ad, etc.), and the results (whether the targets are good and bad) are observed. The results are then used in the next iteration of the loop to change the number of targets that are drawn from each target pool.</p>
+      <p>There are three main components:</p>
+      <ol>
+        <li>
+          Target Pools:
+          <ul>
+            <li>Group targets together based on shared attributes.</li>
+            <li>They are flexible, can be as simple as demographic groups or as complex as machine learning model predictions (see <a href="{{url_for('case_study',sub_page='overview')}}">case study</a>).</li>
+            <li>They can overlap or assign quality scores (like prediction probabilities) for individual targets.</li>
+            <li>You don’t know which pool will have the good targets, so they are distributed evenly at first.</li>
+          </ul>
+        </li>
+        <li>Adaptive Module:
+          <ul>
+            <li>Dictates how many targets to select in the next round based on prior results.</li>
+            <li>Under the hood, it’s a <a href="mab">multi-armed bandit</a></li>
+          </ul>
+        </li>
+        <li>
+          Allocation Mechanism:
+          <ul>
+            <li>Dictates a strategy to pick targets using adaptive module as input.</li>
+            <li>Can pick the allocated targets from each pool all at once.</li>
+            <li>Or you can pick one target at a time, rotating through each pool in a round-robin fashion.</li>
+            <li>The exact strategy you use is dictated by target pool setup and problem domain.</li>
+          </ul>
+        </li>
+
+      </ol>
+      <h3 id="mab">Multi-Armed Bandits</h3>
       <p>A multi-armed bandit takes its name from the idiomatic phrase for a slot machine, "one-armed bandit." The payoff, or reward, for pulling the arm on the slot machine is unknown to the user, but could be estimated after pulling the arm many times. A multi-armed bandit is an extension of this idea where now the user wants to optimize the payoff from pulling the arms from an <i>array of slot machines</i>. </p>
       <p>The optimization process in this scenario relies on balancing how often the user explores pulling the different arms with how often the user exploits the arm with the best known rewards. There are many algorithms, known as explore/exploit policies, that exist to do this: epsilon-greedy, UCB, and Bayes UCB, to name a few. These algorithms are designed to work in an online scenario where the user gets a reward immediately after pulling one of the arms.</p>
       <p>An example of this scenario is a casino with many slot machines. The user pulls the arm on a slot machine, observes a reward, computes the next arm to pull based on the chosen explore/exploit policy, and then pulls the next arm. This process is repeated for each arm pull.</p>
@@ -63,7 +92,7 @@
       <h2>Rewards</h2>
       <p>Rewards are a core part of multi-armed bandit problems. Simply put, a reward is some number quantifying a gain received from pulling one of the arms. The explore-exploit algorithms included in DARTS attempt to maximize rewards received at each time step.</p>
       <p>How that reward is calculated depends on the framing on the problem. One common use-case for multi-armed bandits is comparing advertisements. The arms in this scenario are each advertisement. The explore/exploit algorithm dictates which advertisement is shown. The reward is a visitor clicking on an advertisement.</p>
-      <p>For our <a href="{{url_for('case_study',sub_page='overview')}}">case study</a>, the reward was a model making a correct prediction for an undecided voters. Because our arms had overlapping distributions, each arm received a reward for making a correct prediction regardless of which model contributed it to the target pool. It is up to the user of DARTS to apply rewards according to the needs of their use-case.</p>
+      <p>For our <a href="{{url_for('case_study',sub_page='overview')}}">case study</a>, the reward was a model making a correct prediction for a conflicted voter. Because our arms had overlapping distributions, each arm received a reward for making a correct prediction regardless of which model contributed it to the target pool. It is up to the user of DARTS to apply rewards according to the needs of their use-case.</p>
       <h2>Explore/Exploit Algorithms</h2>
       <p>DARTS ships with three Explore/Exploit Algorithms, epsilon-greedy, UCB1, and Bayes UCB. Each of these algorithms have been modified from the original one-at-a-time online design to accommodate delayed feedback scenarios.</p>
       <h3>Epsilon Greedy</h3>
