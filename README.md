@@ -2,7 +2,7 @@
 
 This repository consists of 
 
-1. A notebook that describes the error analysis for each of the conflicted voter models developed by our strategy methodology
+1. A notebook that describes the [error analysis](model_error_analysis.ipynb) for each of the conflicted voter models developed by our strategy methodology
 2. Source code for our public website at [unbreak.info](https://unbreak.info)
 
 For futher information:
