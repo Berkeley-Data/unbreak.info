@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Unbreak.info</title>
+    <!-- Load CSS files -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- Project CSS File -->
+    <link rel="stylesheet" href="{{url_for('static',filename='main.css')}}">
+  </head>
+  <body>
+    <img src="{{url_for('static',filename='images/bg.svg')}}" id="bg" alt="Background Image">
+    <!-- Navigation Menu-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="{{url_for('index')}}">Unbreak.info</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Software
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{url_for('software',sub_page='tech-overview')}}">Overview</a>
+              <a class="dropdown-item" href="{{url_for('software',sub_page='demo')}}">Demo</a>
+              <a class="dropdown-item" href="{{url_for('software',sub_page='docs')}}">Documentation</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Case Study
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{url_for('case_study',sub_page='overview')}}">Overview</a>
+              <a class="dropdown-item" href="{{url_for('case_study',sub_page='model-strategy')}}">Modeling Strategy</a>
+              <a class="dropdown-item" href="{{url_for('case_study',sub_page='model-performance')}}">Model Performance</a>
+            </div>
+          </li>
+            <a class="nav-item nav-link" href="{{url_for('team')}}">Team</a>
+          </div>
+      </div>
+    </nav>
+    <div class="container">
+      <h1 class="text-center">Case Study Overview</h1>
+      <h2>Abstract</h2>
+      <div class="row">
+        <div class="col">
+          <p>Grassroots organizing paired with cutting-edge data science delivers a unique formula to find conflicted voters in an evolving political landscape.</p>
+        </div>
+      </div>
+      <h2>Finding undecided voters in a politically charged environment
+      </h2>
+      <div class="row">
+        <div class="col">
+          <p>Who is the undecided voter? What is their psychology and how can we change their minds? For a machine, the answer to the first question is easier to fathom. To answer the second, not so much. The answer as we all know is that it varies - a lot.</p>
+          <p>An undecided voter could be the former Bernie Sanders supporter. Or the forgotten rust-belt worker. Or a suburban mom disillusioned by the Trumpian ethos of politics. For a machine learning system, these people are the same. But to truly understand these people, to talk to them, to appreciate them and to tune into their psychology, we need an empathetic system that only a human can provide.</p>
+          <p>When we pair these two systems, machines for the first question and humans for the second, we can assemble a powerful response to the undecided voter dilemma. One that could help shift the tide of an election.</p>
+          <p>Finding undecided voters is very difficult, even for a machine learning process. As the political climate shifts, the issues at the forefront of a voter’s mind may change, and a voter’s hesitance to endorse a specific candidate also changes. Under these conditions, flexibility is key. Typical demographic or issue-based targeting simply won’t work.</p>
+          <p>To address this challenge our team engineered an adaptive system that responds to changes as the attitudes of undecided voters change.</p>
+        </div>
+      </div>
+      <h2>How it works</h2>
+      <div class="row">
+        <div class="col text-center">
+          <figure class="figure">
+            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/case-overview/adaptive-process.png')}}" alt="Image depicting the adaptive process">
+            <figcaption class="figure-caption text-right">Figure 1: The Adaptive Process</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p>A daily list of voters and their phone numbers is prepared each night which allows thousands of Deep Canvass conversations to be held each day by the volunteer call team. This list is fed into a phone bank system. The result of these Deep Canvass conversations - the pre-score and post-score responses - are recorded and transmitted after the calls are complete into a data pipeline for processing. The responses are matched, scored, and fed into our Dynamic and Responsive Targeting System, or DARTS. DARTS maintains tracking on its various machine learning models used for prediction. The system allocates the next round of calls based on which model is performing best, enabling flexibility as the political winds shift with the minds of the undecided voter.</p>
+        </div>
+      </div>
+      <h2>Developing models for prediction</h2>
+      <div class="row">
+        <div class="col">
+          <p>To find undecided voters we modeled several attributes that helped us quantify the key distinguishing features of Trump supporters, Biden supporters, and undecided voters. The use of proxy variables for certain issues were beneficial, for example, scores on whether someone is believed to support immigration, climate change, or unionized labor. </p> 
+          <p>After our features were developed, we employed several <a href="{{url_for('case_study',sub_page='model-strategy')}}">modeling strategies</a>. The models we developed using these strategies were then used as input for our MVP: Dynamic and Responsive Targeting System (DARTS).</p>
+        </div>
+      </div>
+      <h3>The DARTS solution</h3>
+      <div class="row">
+        <div class="col">
+          <p>Most machine learning models are static, but in a dynamic landscape static models can fail. We could not build a singular, perfect model-- we needed a way to adapt. Using classic reinforcement learning techniques, we pit several models against each other in order to find the best mixture of voters to target.</p>
+          <p>Dynamic and responsive targeting allows us to make adjustments in who People’s Action should call in reaction to feedback from external events that may favor one model’s predictions over another. Daily updates make this technology work, where draws from any given model are based on how well that model performed on prior observations.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col text-center">
+          <figure class="figure">
+            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/case-overview/darts.png')}}" alt="Image depicting the adaptive process">
+            <figcaption class="figure-caption text-right">Figure 2: Dynamic and Responsive Targeting System</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p>In Figure 2 above, we identify a target population. At the beginning, we drew targets evenly from each model and took it’s top predictions. Then, as canvasses are made, observations are recorded and we retrieve the results of the Deep Canvass conversation (the pre-score and post-score values). Based on these responses, we learn which model performed best and dynamically reallocate the next set of target assignments. The process repeats with each day of the Deep Canvass.</p>
+          <p>The clear winners of this ensemble increasingly get more of the share of targets over time. But the system adapts when conditions change. The technology also allows us to “hot drop” in new models live to compete with the rest. If a new model becomes a winner, it gets more of the share. But not so much that it introduces a disruption or a devastating surprise, especially critical in a production setting where processes are dependent on a core base of data to keep operations going.</p>
+          <p>An in-depth explanation of the technical components of DARTS can be found on our <a href="{{url_for('software',sub_page='tech-overview')}}">technical overview page</a>.</p>
+        </div>
+      </div>
+      <h2>The Result</h2>
+      <div class="row">
+        <div class="col text-center">
+          <figure class="figure">
+            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/case-overview/result.png')}}" alt="Image depicting the adaptive process">
+            <figcaption class="figure-caption text-right">Figure 3: Voter Targeting Results</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p>We activated DARTS for live recommendations during the last 13 days leading up to the election. Enabled by the technology, People’s Action found an additional 1,026 target voters, an increase of 33%, in the five states where the technology was used.</p>
+        </div>
+      </div> 
+    </div>
+  <!-- Load Javascript -->
+  <!-- Bootstrap Related -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  </body>
+</html>

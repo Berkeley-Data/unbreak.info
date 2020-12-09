@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Unbreak.info</title>
+    <!-- Load CSS files -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- Project CSS File -->
+    <link rel="stylesheet" href="{{url_for('static',filename='main.css')}}">
+  </head>
+  <body>
+    <img src="{{url_for('static',filename='images/bg.svg')}}" id="bg" alt="Background Image">
+    <!-- Navigation Menu-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="{{url_for('index')}}">Unbreak.info</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Software
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{url_for('software',sub_page='tech-overview')}}">Overview</a>
+              <a class="dropdown-item" href="{{url_for('software',sub_page='demo')}}">Demo</a>
+              <a class="dropdown-item" href="{{url_for('software',sub_page='docs')}}">Documentation</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Case Study
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{url_for('case_study',sub_page='overview')}}">Overview</a>
+              <a class="dropdown-item" href="{{url_for('case_study',sub_page='model-strategy')}}">Modeling Strategy</a>
+              <a class="dropdown-item" href="{{url_for('case_study',sub_page='model-performance')}}">Model Performance</a>
+            </div>
+          </li>
+            <a class="nav-item nav-link" href="{{url_for('team')}}">Team</a>
+          </div>
+      </div>
+    </nav>
+    <div class="container">
+      <h1 class="text-center">Model Performance</h1>
+      <div class="row">
+        <div class="col"> 
+          <h2>Overview</h2>
+          <p>This section discusses the model performance from the implementation of the different models that served as target pools in DARTS. What follows is a description of the features, followed by an overview of the algorithms applied, discussion of the overall performance results and error analysis.</p>
+          <h2>Description of Features</h2>
+          <p>We used a feature set that included demographics, jurisdictional attributes, socio-economic status, voting history and survey data on people’s attitudes on a variety of political and social issues. We reduced the dimensionality of the feature set for modeling purposes using statistical analysis approaches (correlation analysis and <a href="https://medium.com/analytics-vidhya/is-this-the-best-feature-selection-algorithm-borutashap-8bc238aa1677">Boruta methods</a>) and intuition around thematically-related features. Features were engineered and normalized to scale for model implementation. The sources of this data included voter profile data and survey response data provided by the People’s Action campaign.</p>
+          <h2>Algorithms</h2>
+          <p>This section describes the classifier algorithms applied across the model strategies.</p>
+          <h3>Logistic regression</h3>
+          <p>Logistic regression is considered one of the most common and foundational algorithms in supervised learning. Fundamentally, logistic regression models the linear relationship between one or more arbitrary independent features and binary dependent variables. Logistic regression applies the logit transformation such that the feature set goes from an infinite, continuous scale to a probabilistic scale bounded between 0 and 1. Functionally, the log odds of an outcome occurrence is a linear function of the features. The binary nature of the outcome variable in this problem domain (decided or undecided voter) makes logistic regression an appropriate choice classifier.</p>
+          <h3>Random Forest</h3>
+          <p>The Random Forest classifier builds on a bagged decision trees classifier. It creates training sets by bootstrap sampling with replacement in order to build each tree iteratively. Random Forest classifiers choose a subset of features to consider as split points. Regularization occurs as a result of having many different trees without pruning. The bootstrapping training process repeats iteratively by creating multiple trees. Each result of each iteration will be a bit different given different trees formed. The results are averaged to avoid overfitting.</p>
+          <h3>Support Vector Machines (SVM)</h3>
+          <p>The SVM classifier is a non-probabilistic linear classifier. The SVM training algorithm builds a decision function (support vectors) that assigns new observations to one category or the other. Different kernel functions are specified in the decision function. SVM is generally considered an effective classifier in high-dimensional space. </p>
+          <h3>K-Nearest Neighbors (KNN)</h3>
+          <p>The KNN classifier induces complex decision boundaries to separate observations. This can be thought of through a Voronoi diagram where regions in a space that are closest to each point are learned. The Voronoi region around each point defines the label. Regions can become more complex and arbitrary depending on specific examples in the training set. The higher the value of K, the smoother the decision boundary and the better the boundary generalizes to new data. Low values of K tend to overfit the training data and not generalize well on test data.</p>
+          <h3>Adaboost</h3>
+          <p>The Adaboost algorithm is an implementation of a boosting classifier developed in the early 2000s. Its main attributes are that it sets equal weights for each training example and proceeds to reduce weights for correct examples and increase weights for misclassified examples. Thus, AdaBoost weighs data points that are difficult to predict. Each iteration of the classifier is trained with the objective that respects importance weights placed on each feature. </p>
+          <h3>Extreme Gradient Boosting (XGBoost)</h3>
+          <p>The XGBoost algorithm is an implementation of a boosting decision trees classifier that has gained popularity in recent years for its good performance and speed. In boosting, a sequence of models are trained where each iteration emphasizes examples misclassified by the previous model. This ensemble technique iteratively takes on new models to correct existing models. Models are added sequentially until no further improvements can be made using gradient descent to minimize the loss function. Refer to this useful <a href="https://machinelearningmastery.com/gentle-introduction-xgboost-applied-machine-learning/">resource</a> for further discussion about XGBoost. </p>
+          <h3>Light Gradient Boosting Model (LightGBM)</h3>
+          <p>The LightGBM algorithm is an implementation of a boosting decision tree classifier that, like XGBoost, has gained popularity in recent years for its good performance and speed, particularly in handling big data. The main difference of LightGBM is that it uses histogram-based algorithms to bucket continuous features into discrete bins, which speeds up training and reduces memory usage. XGBoost, on the other hand, uses a pre-sorted algorithmic approach. The advantages of histogram-based algorithms include reducing the cost of calculating the information gain at each split and uses histogram subtraction for speed up. Refer to the <a href="https://lightgbm.readthedocs.io/en/latest/Features.html">LightGBM documentation</a> for more information. </p>
+          <h2>Results</h2>
+          <p>Model performance over the implementation period, following October 20th through November 3rd, are presented here. Models are compared to a baseline model, which is based on a stylized logistic regression model using People’s Action filters. We use the Cohen's Kappa metric to measure model prediction agreement with actual outcomes, Matthew’s Correlation Coefficient metrics to measure how well a model predicts true positives and true negatives, precision metric to measure how well a model correctly identifies undecided voters and a recall metric to measure how well a model does not miss identifying undecided voters. For simplicity, just the results from the implementation of the best performing algorithm for each model strategy are discussed here.</p>
+          <h3>Cohen’s Kappa coefficient</h3>
+          <p>Cohen’s Kappa is used to measure how well the model predictions perform relative to the actual outcomes. It is a statistic typically used to measure inter-rater reliability for qualitative items. It can be thought of as the proportionate agreement of a model predictions with actual results over the expected probabilities of agreement. Figure 1 below shows the Cohen’s Kappa measures for each model. Our models perform better than baseline. Model Strategy 4 using XGBoost and Model Strategy 5 using Light GBM are the best performing classifiers with Cohen’s Kappa greater than 10%.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col text-center"> 
+          <figure class="figure fig-width-limit">
+            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure1.png')}}" alt="Cohen’s Kappa for each model">
+            <figcaption class="figure-caption text-right"> Figure 1: Cohen’s Kappa for each model</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h3>Matthew’s Correlation Coefficient</h3>
+          <p>Similar to Cohen’s Kappa, Matthew’s Correlation Coefficient (MCC) is a balanced measure of how well a model predicts True Positives and True Negatives, which is useful in this case when the classes (decided and undecided voter groups) are of different sizes. The MCC is a correlation coefficient between the observed and predicted binary classifications, returning a value between −1 and +1. A coefficient of +1 represents a perfect prediction, 0 no better than random prediction and −1 indicates total disagreement between prediction and observation. Figure 2 below shows the MCC measures for each model. Our models perform better than baseline. Model Strategy 4 using XGBoost and Model Strategy 5 using Light GBM are the best performing classifiers with MCC greater than 10%.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col text-center">    
+          <figure class="figure fig-width-limit">
+            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure2.png')}}" alt="Matthew’s Correlation Coefficient for each model ">
+            <figcaption class="figure-caption text-right"> Figure 2: Matthew’s Correlation Coefficient for each model </figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h3>Precision</h3>
+          <p>Model precision is an important evaluation metric given the cost of calling. Higher precision signals a higher rate of undecided voters correctly identified. This would mean minimizing false positives or when the model directs the caller to contact a decided voter instead of an undecided voter. Figure 3 shows the model precision metric for each model. All models perform better than baseline. Model precision is consistently above 40% for all models. Model Strategy 4 using XGBoost and Model Strategy 5 using Light GBM are the best performing classifiers with 50% precision.</p>
+        </div>
+      </div>  
+      <div class="row">
+        <div class="col text-center">    
+          <figure class="figure fig-width-limit">
+            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure3.png')}}" alt="Precision performance overall for each model in the post-October 18th test period">
+            <figcaption class="figure-caption text-right"> Figure 3: Precision performance overall for each model in the post-October 18th test period </figcaption>
+          </figure>
+          <figure class="figure fig-width-limit">
+            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure4.png')}}" alt="Model precision performance trend for each model in the post-October 18th period">
+            <figcaption class="figure-caption text-right"> Figure 4: Model precision performance trend for each model in the post-October 18th period</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col"> 
+          <p>Figure 4 shows the model precision performance over time post-October 20th.  We observe that no model consistently outperforms the others. While most models outperform the baseline model, there is no clear better model over all days. For example, we observe Model Strategy 3 with Logistic Regression implementation outperforms other models on October 24th, followed by a sharp underperformance on October 25th. We attribute this to the target voters being an elusive group. Target voters might have certain persistent traits, shifts in the political climate and top-of-mind issues can lead to different sources of hesitancy on any given day particularly on days closer to the election.</p>
+          <h3>Recall</h3>
+          <p>Model recall is an important evaluation metric given that failing to call actual undecided voters because the model considers them to be decided voters is an acute missed opportunity. This is particularly important in the context of competitive elections where even a small margin of votes may matter and failing to contact enough undecided voters could be consequential. Figure 5 shows the recall metric for each model. All models perform better than baseline. Model recall is consistently above 40% for all models. Model Strategy 4 using XGBoost and Model Strategy 5 using Light GBM are the best performing classifiers with recall above 60%. In particular Model Strategy 4 using XGBoost achieves 68% recall, while baseline is 42%. </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col text-center">  
+          <figure class="figure fig-width-limit">
+            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure5.png')}}" alt="Recall performance overall for each model in the post-October 18th test period">
+            <figcaption class="figure-caption text-right"> Figure 5: Recall performance overall for each model in the post-October 18th test period </figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h2>Error Analysis</h2>
+          <h3>Confusion Matrix</h3>
+          <p>An analysis of the confusion matrix outcomes from binary classification predictions of decided versus undecided voters gives an understanding model performance. Figure 6 below is an example confusion matrix for the case problem. </p>
+        </div>
+      </div> 
+      <div class="row">
+        <div class="col text-center"> 
+          <figure class="figure fig-width-limit">
+            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure6.png')}}" alt="Confusion matrix example for the binary undecided/decided voter classification problem">
+            <figcaption class="figure-caption text-right"> Figure 6: Confusion matrix example for the binary undecided/decided voter classification problem</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col"> 
+          <p>This view allows us to understand the negative predictive value, NPV, across the top row and positive predictive value, PPV or precision, across the bottom row.</p>
+          \[PPV = \frac{True\>positives}{True\>positives + False\>positives}\]
+          \[NPV = \frac{True\>negatives}{True\>negatives + False\>negatives}\]
+          <p>Comparing the confusion matrix performance on the train data to the performance on the test data (post-October 20th) tells us how well the model generalizes or fits to real data in the wild. A model that performs well on the train data, but performs poorly on the test date is said to overfit; whereas a model that performs poorly on the train data is said to be underfit. A comparison of the model’s performance on test data to the baseline model’s performance gives an informative evaluation measure of true performance. Figures 7-11 show the confusion matrix performance for each of the models. </p>
+          <p>Generally, models have higher PPV in the test data as compared to the baseline model. The Model Strategy 4 and Model Strategy 5 implementations notably show much higher PPV in the test data as compared to the baseline model.</p>
+          <p>The Model Strategy 1 and Model Strategy 2 implementation generalizes well with an improvement in PPV going from the training data to the test data. The other models tend to generalize less well with mostly lower PPV going from training data to test data; however, the level of PPVs on the training data tends to be higher to begin with for the Model Strategies 4 and 5 implementations.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col text-center">   
+          <figure class="figure fig-width-limit">
+            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure7.png')}}" alt="Confusion matrices for Model Strategy 1 - Random Forestm">
+            <figcaption class="figure-caption text-right"> Figure 7:  Confusion matrices for Model Strategy 1 - Random Forest</figcaption>
+          </figure>
+          <figure class="figure fig-width-limit">
+            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure8.png')}}" alt="Confusion matrices for Model Strategy 2 - Logistic Regression">
+            <figcaption class="figure-caption text-right"> Figure 7: Confusion matrices for Model Strategy 2 - Logistic Regression</figcaption>
+          </figure>
+          <figure class="figure fig-width-limit">
+            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure9.png')}}" alt="Confusion matrices for Model Strategy 3 - Logistic Regression">
+            <figcaption class="figure-caption text-right"> Figure 9: Confusion matrices for Model Strategy 3 - Logistic Regression</figcaption>
+          </figure>
+          <figure class="figure fig-width-limit">
+            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure10.png')}}" alt="Confusion matrices for Model Strategy 4 - XGBoost">
+            <figcaption class="figure-caption text-right"> Figure 10: Confusion matrices for Model Strategy 4 - XGBoost</figcaption>
+          </figure>
+          <figure class="figure fig-width-limit">
+            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure11.png')}}" alt="Confusion matrices for Model Strategy 5 - Light GBM">
+            <figcaption class="figure-caption text-right"> Figure 11: Confusion matrices for Model Strategy 5 - Light GBM</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">  
+          <h3>Balancing False Positives and False Negatives</h3>
+          <p>The models are evaluated on their error distribution balance of Type 1 (False Positives) and Type 2 (False Negatives). For the problem of identifying undecided voters for a calling campaign in competitive election (“swing”) states, we seek to identify the model that, on balance, achieves a minimum of False Negatives and False Positives with a preference in minimizing False Negatives. A comparison of the models’ error distribution performance on test data to the baseline model’s performance gives an informative evaluation measure of true performance. Figures 12-16 show the error distribution for each of the models. </p>
+          <p>False Positives tend to decrease comparing the test performance to the baseline model performance for the Model Strategies 1, 2 and 3 implementations. The test performance of Model Strategies 4 and 5 implementations show a sharper decline in False Negatives with a somewhat small increase in False Positives compared to baseline.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col text-center">  
+          <figure class="figure fig-width-limit">
+            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure12.png')}}" alt="Error distribution for Model 1 - Random Forest">
+            <figcaption class="figure-caption text-right"> Figure 12: Error distribution for Model 1 - Random Forest</figcaption>
+          </figure>
+          <figure class="figure fig-width-limit">
+            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure13.png')}}" alt="Error distribution for Model 2 - Logistic Regression">
+            <figcaption class="figure-caption text-right"> Figure 13: Error distribution for Model 2 - Logistic Regression</figcaption>
+          </figure>
+          <figure class="figure fig-width-limit">
+            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure14.png')}}" alt="Error distribution for Model 3 - Logistic Regression">
+            <figcaption class="figure-caption text-right"> Figure 14: Error distribution for Model 3 - Logistic Regression</figcaption>
+          </figure>
+          <figure class="figure fig-width-limit">
+            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure15.png')}}" alt="Error distribution for Model 4 - XGBoost">
+            <figcaption class="figure-caption text-right"> Figure 15: Error distribution for Model 4 - XGBoost</figcaption>
+          </figure>
+          <figure class="figure fig-width-limit">
+            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure16.png')}}" alt="Error distribution for Model 5 - Light GBM">
+            <figcaption class="figure-caption text-right"> Figure 16: Error distribution for Model 5 - Light GBM</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  <!-- Load Javascript -->
+  <!-- Bootstrap Related -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <!--MathJax (Latex)-->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </body>
+</html>

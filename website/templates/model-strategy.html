@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Unbreak.info</title>
+    <!-- Load CSS files -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- Project CSS File -->
+    <link rel="stylesheet" href="{{url_for('static',filename='main.css')}}">
+  </head>
+  <body>
+    <img src="{{url_for('static',filename='images/bg.svg')}}" id="bg" alt="Background Image">
+    <!-- Navigation Menu-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="{{url_for('index')}}">Unbreak.info</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Software
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{url_for('software',sub_page='tech-overview')}}">Overview</a>
+              <a class="dropdown-item" href="{{url_for('software',sub_page='demo')}}">Demo</a>
+              <a class="dropdown-item" href="{{url_for('software',sub_page='docs')}}">Documentation</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Case Study
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{url_for('case_study',sub_page='overview')}}">Overview</a>
+              <a class="dropdown-item" href="{{url_for('case_study',sub_page='model-strategy')}}">Modeling Strategy</a>
+              <a class="dropdown-item" href="{{url_for('case_study',sub_page='model-performance')}}">Model Performance</a>
+            </div>
+          </li>
+            <a class="nav-item nav-link" href="{{url_for('team')}}">Team</a>
+          </div>
+      </div>
+    </nav>
+    <div class="container">
+      <h1 class="text-center">Modeling Strategy</h1>
+      <h2>Training Data</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <p>Our training set consisted of phone bank data collected by People’s Action between June 24 and October 18, 2020. We gathered the data from ~14,000 conversations that occurred during this period of time from 8 states across the U.S. Since callers asked potential voters who they were planning to vote for prior to further conversations, we used this initial rating as our ground truth. The ratings are binned into 5 categories: favors Trump, leaning Trump, undecided, leaning Biden, and favors Biden. We call those who are undecided or leaning as persuadable voters.</p>
+        </div>
+        <div class="col-md-6 text-center">
+          <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-strategy/initial-rating.png')}}" alt="Image depicting rating scale">
+        </div>
+      </div>
+      <h2>Modeling Strategies</h2>
+      <div class="row">
+        <div class="col">
+          
+      <p>We utilized a variety of modeling strategies to provide inputs into DARTS. Having some diversity in our ensemble allows us to cast a wider net for finding undecided or persuadable voters. We devised four modeling strategies that could be used for identifying undecided or persuadable voters. Each approach takes a different view on the classification problem and uses different feature sets. However, due to circumstances in the timing, we were only able to use the first three strategies in production.</p>
+        </div>
+        
+      </div>
+      <h3>Strategy 1</h3>
+      <div class="row">
+        <div class="col-md-6">
+          
+          <p>The first strategy utilized a binary classifier to predict the probability of one of two outcomes: whether someone would vote for Trump or Biden. This model strategy uses features that each party may feel strongly about, while undecided voters may have a moderate view, such as scores on immigration or healthcare. Using the model’s output probabilities, we targeted those in the middle of the probability range, the range likely to represent people who the model is uncertain about. Within this range, we hypothesized that we could find a higher proportion of undecided voters (in gray) compared to those who were decided.</p>
+        </div>
+        <div class="col-md-6 text-center">
+          <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-strategy/strategy-1.png')}}" alt="Image depicting model strategy 1">
+        </div>
+      </div>
+      <h3>Strategy 2</h3>
+      <div class="row">
+        <div class="col-md-6">
+          
+      <p>In the second strategy, we trained two different binary classification models, one that predicted Biden supporters, and another that predicted Trump supporters. From these two models, we calculated the difference in probabilities for each voter. We targeted those with a low difference in the probabilities of supporting either candidate, as we believed we could find a higher proportion of undecided voters.</p>
+        </div>
+        <div class="col-md-6 text-center">
+          <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-strategy/strategy-2.png')}}" alt="Image depicting model strategy 2">
+        </div>
+      </div>
+      <h3>Strategy 3</h3>
+      <div class="row">
+        <div class="col-md-6">
+          
+          <p>We also trained a model that classifies across three categories: Biden supporters, Trump supporters, and undecided. To combat the fact that undecided voters make up a small proportion of the population, the number of voters in the two decided classes were downsampled to match the number of undecided voters.</p>
+        </div>
+        <div class="col-md-6 text-center">
+          <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-strategy/strategy-3.png')}}" alt="Image depicting model strategy 3">
+        </div>
+      </div>
+      <h3>Strategy 4</h3>
+      <div class="row">
+        <div class="col-md-6">
+          
+          <p>We also tried training a binary classification model on identifying persuadable voters against strong decided voters. Since voters that are leaning would still be candidates for deep canvassing, we included them in the positive class along with undecided voters. This model strategy uses features that describe voters who may not be as politically involved, such as voter turnout on previous elections. For this model, we would target voters who have high probabilities of being persuadable.</p>
+        </div>
+        <div class="col-md-6 text-center">
+          <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-strategy/strategy-4.png')}}" alt="Image depicting model strategy 4">
+        </div>
+      </div> 
+    </div>
+  <!-- Load Javascript -->
+  <!-- Bootstrap Related -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  </body>
+</html>
