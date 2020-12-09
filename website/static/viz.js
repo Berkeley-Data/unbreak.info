@@ -184,22 +184,13 @@ function plotLines(policy,greed_factor,ucb_scale,epsilon,strategy,order) {
         //////////
         // GENERAL //
         //////////
-
         var reward_data = []
         var regret_data = []
         //iterate over timesteps
         for (var i = 0; i<data.length; i++){
-             var reward = 0
-             var regret = 0
-            // iterate over target pools
-            for (var k = 0; k<data[i].length; k++){
-                reward += data[i][k]["rewards"]
-                regret += data[i][k]["regrets"]
-            }
             reward_data.push({'x':i+1,'y':data[i][0]['target_reward_sum']})
             regret_data.push({'x':i+1,'y':data[i][0]['target_regret_sum']})
         }
-
         //////////
         // AXIS //
         //////////

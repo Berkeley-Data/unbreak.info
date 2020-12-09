@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 import json
-with open('static/data/simulations_test_sum.json','r') as f:
+with open('static/data/simulations_for_demo.json','r') as f:
     json_data = json.load(f)
 app = Flask(__name__)
 
