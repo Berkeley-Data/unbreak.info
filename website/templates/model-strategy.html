@@ -49,7 +49,7 @@
       <h2>Training Data</h2>
       <div class="row">
         <div class="col-md-6">
-          <p>Our training set consisted of phone bank data collected by People’s Action between June 24 and October 18, 2020. We gathered the data from ~14,000 conversations that occurred during this period of time from 8 states across the U.S. Since callers asked potential voters who they were planning to vote for prior to further conversations, we used this initial rating as our ground truth. The ratings are binned into 5 categories: favors Trump, leaning Trump, undecided, leaning Biden, and favors Biden. We call those who are undecided or leaning as persuadable voters.</p>
+          <p>Our training set consisted of phone bank data collected by People’s Action between June 24 and October 18, 2020. We gathered the data from ~14,000 conversations that occurred during this period of time from 8 states across the U.S. Since callers asked potential voters who they were planning to vote for prior to further conversations, we used this initial rating as our ground truth. The ratings are binned into 5 categories: favors Trump, leaning Trump, undecided, leaning Biden, and favors Biden. We call those who are undecided or leaning as conflicted voters.</p>
         </div>
         <div class="col-md-6 text-center">
           <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-strategy/initial-rating.png')}}" alt="Image depicting rating scale">
@@ -59,7 +59,7 @@
       <div class="row">
         <div class="col">
           
-      <p>We utilized a variety of modeling strategies to provide inputs into DARTS. Having some diversity in our ensemble allows us to cast a wider net for finding undecided or persuadable voters. We devised four modeling strategies that could be used for identifying undecided or persuadable voters. Each approach takes a different view on the classification problem and uses different feature sets. However, due to circumstances in the timing, we were only able to use the first three strategies in production.</p>
+      <p>We utilized a variety of modeling strategies to provide inputs into DARTS. Having some diversity in our ensemble allows us to cast a wider net for finding undecided or conflicted voters. We devised four modeling strategies that could be used for identifying undecided or conflicted voters. Each approach takes a different view on the classification problem and uses different feature sets. However, due to circumstances in the timing, we were only able to use the first three strategies in production.</p>
         </div>
         
       </div>
