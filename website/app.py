@@ -1,8 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import json
-with open('static/data/simulations_no_bounce.json','r') as f:
+with open('static/data/simulations_test_sum.json','r') as f:
     json_data = json.load(f)
-print(json_data[0])
 app = Flask(__name__)
 
 # route to root of app. 

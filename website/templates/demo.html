@@ -45,78 +45,130 @@
       </div>
     </nav>
     <div id="main-container text-center" class="container">
-      <h1 class="text-center">DARTS Demo</h1>
+      <div class = "row">
+        <div class="col">
+          <h1 class="text-center">DARTS Demo</h1>
+          <p>The visualizations below are based on simulated DARTS cycles using data collected during our <a href="{{url_for('case_study',sub_page='overview')}}">case study</a>. Play with the different explore/exploit policies, parameters, and allocation strategies and see how target pool allocations change. Also observe the different reward (correct target) and regret (incorrect target) accumulation behaviors.</p>
+        </div>
+      </div>
       <div id="plots" class="row">
         <div id="allocation-plot" class="col-md-6 text-center"></div>
         <div id="line-plot" class="col-md-6 text-center"></div>
       </div>
       <div id="viz_controls" class="row">
-        <div class="col-md-2">
-          <label class="mr-md-2" for="inlineFormCustomSelectPolicy">Policy</label>
-          <select class="custom-select mr-md-2" id="inlineFormCustomSelectPolicy">
-            <option value="UCB1" selected>UCB1</option>
-            <option value="Bayes_UCB">Bayes UCB</option>
-            <option value="epsilon_greedy">Epsilon-Greedy</option>
-          </select>
-          <small id="policyHelpBlock" class="form-text text-muted">
-            Choose an explore/exploit policy.
-          </small>
+        <div class="col-md-6">
+          <h2>Adaptive Module Parameters</h2>
+          <div class="row">
+            <div class="col-md-4">
+              <label class="mr-md-4" for="inlineFormCustomSelectPolicy">Policy</label>
+              <select class="custom-select mr-md-4" id="inlineFormCustomSelectPolicy">
+                <option value="UCB1" selected>UCB1</option>
+                <option value="Bayes_UCB">Bayes UCB</option>
+                <option value="epsilon_greedy">Epsilon-Greedy</option>
+              </select>
+              <small id="policyHelpBlock" class="form-text text-muted">
+                Choose an explore/exploit policy.
+              </small>
+            </div>
+            <div class="col-md-4">
+              <label class="mr-md-4" for="inlineFormCustomSelectUCBScale">Bayes UCB Scale</label>
+              <select class="custom-select mr-md-4" id="inlineFormCustomSelectUCBScale">
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+              <small id="UCBScaleHelpBlock" class="form-text text-muted">
+                Bayes UCB Scale only valid for the Bayes UCB Policy.
+              </small>
+            </div>
+            <div class="col-md-4">
+              <label class="mr-md-4" for="inlineFormCustomSelectEpsilon">Epsilon</label>
+              <select class="custom-select mr-md-4" id="inlineFormCustomSelectEpsilon">
+                <option value="0.1" selected>0.1</option>
+                <option value="0.35">0.35</option>
+                <option value="0.55">0.55</option>
+              </select>
+              <small id="epsilonHelpBlock" class="form-text text-muted">
+                Epsilon only valid for Epsilon-Greedy policy.
+              </small>
+            </div>
+          </div>
+          <div class="row param-info">
+            <div class="col">
+              <p><strong>Explore/Exploit Policy</strong></p>
+              <p>Explore/Exploit Policies dictate the general behavior of how the Adaptive Module chooses to <u>explore</u> target pools it does not know much about or <u>exploit</u> the target pool it thinks is best.</p>
+              <ul>
+                <li><i>UCB1</i>: relies on an upper confidence bound to quantify how uncertain the Adaptive Module is about a target pool.</li>
+                <li><i>Bayes UCB</i>: similar to UCB1, but changes how the upper confidence bound works to gain confidence in target pools more quickly.</li>
+                <li><i>Epsilon-Greedy</i>: balances exploration and exploitation with a simple heuristic: Explore sub-optimal target pools a fraction of the time equal to epsilon. </li>
+              </ul>
+              <p><strong>Bayes UCB Scale</strong></p>
+              <p>Parameter applicable to the Bayes UCB policy. Controls the size of the upper confidence bound by choosing the number of standard deviations of the rewards earned by each target pool to take into account.</p>
+              <p><strong>Epsilon</strong></p>
+              <p>Parameter applicable to the Epsilon-Greedy policy. Higher values explore more often whereas lower values lean towards exploiting the best performing target pool.</p>
+            </div>
+          </div>
         </div>
-        <div class="col-md-2">
-          <label class="mr-md-2" for="inlineFormCustomSelectGreedFactor">Greed Factor</label>
-          <select class="custom-select mr-md-2" id="inlineFormCustomSelectGreedFactor">
-            <option value="1" selected>1</option>
-            <option value="1.5">1.5</option>
-            <option value="3">3</option>
-          </select>
-          <small id="greedHelpBlock" class="form-text text-muted">
-            Choose a greed factor. Increase to exploit best target pool more often.
-          </small>
+        <div class="col-md-6">
+          <h2>Allocation Strategy Parameters</h2>
+          <div class="row">
+            <div class="col-md-4">
+              <label class="mr-md-4" for="inlineFormCustomSelectGreedFactor">Greed Factor</label>
+              <select class="custom-select mr-md-4" id="inlineFormCustomSelectGreedFactor">
+                <option value="1" selected>1</option>
+                <option value="1.5">1.5</option>
+                <option value="3">3</option>
+              </select>
+              <small id="greedHelpBlock" class="form-text text-muted">
+                Choose a greed factor. Increase to exploit best target pool more often.
+              </small>
+            </div>
+            <div class="col-md-4">
+              <label class="mr-md-4" for="inlineFormCustomSelectStrategy">Picking Strategy</label>
+              <select class="custom-select mr-md-4" id="inlineFormCustomSelectStrategy">
+                <option value="round-robin" selected>Round-Robin</option>
+                <option value="greedy">Greedy</option>
+                <option value="altruist">Altruist</option>
+              </select>
+              <small id="greedHelpBlock" class="form-text text-muted">
+                Choose a picking strategy. 
+              </small>
+            </div>
+            <div class="col-md-4">
+              <label class="mr-md-4" for="inlineFormCustomSelectOrder">Picking Order</label>
+              <select class="custom-select mr-md-4" id="inlineFormCustomSelectOrder">
+                <option value="best" selected>Best</option>
+                <option value="worst">Worst</option>
+                <option value="random">Random</option>
+              </select>
+              <small id="greedHelpBlock" class="form-text text-muted">
+                Choose a picking order. 
+              </small>
+            </div>
+          </div>
+          <div class="row param-info">
+            <div class="col">
+              <p><strong>Greed Factor</strong></p>
+              <p>Greed Factor is a general factor that modifies the scores output by an explore/exploit policy. The higher the factor, the greedier any of the policies will become.</p>
+              <p><strong>Picking Strategy</strong></p>
+              <p>Dictates how targets are picked from the target pools.</p>
+              <ul>
+                <li><i>Round-Robin</i>: picks one target at a time from each target pool, rotating through the pools until allocations have been exhausted. Fairest method.</li>
+                <li><i>Greedy</i>: picks all of the targets at one time from the target pool with the best performance. Biases top performing target pool.</li>
+                <li><i>Altruist</i>: picks all of the targets at one time from the target pool with the worst performance. Biases worst performing target pool.</li>
+              </ul>
+              <p><strong>Picking Order</strong></p>
+              <p>Determines which targets should be prioritized when picking from a target pool.</p>
+              <ul>
+                <li><i>Best</i>: if the target pool assigns scores to targets, picks the highest scoring targets first. If it does not, picks the first target in the list of targets.</li>
+                <li><i>Worst</i>: if the target pool assigns scores to targets, picks the lowest scoring targets first. If it does not, picks the last target in the list of targets.</li>
+                <li><i>Random</i>: picks a target from the target pool at random.</li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div class="col-md-2">
-          <label class="mr-md-2" for="inlineFormCustomSelectUCBScale">Bayes UCB Scale</label>
-          <select class="custom-select mr-md-2" id="inlineFormCustomSelectUCBScale">
-            <option value="1" selected>1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-          <small id="UCBScaleHelpBlock" class="form-text text-muted">
-            Bayes UCB Scale only valid for the Bayes UCB Policy.
-          </small>
-        </div>
-        <div class="col-md-2">
-          <label class="mr-md-2" for="inlineFormCustomSelectEpsilon">Epsilon</label>
-          <select class="custom-select mr-md-2" id="inlineFormCustomSelectEpsilon">
-            <option value="0.1" selected>0.1</option>
-            <option value="0.35">0.35</option>
-            <option value="0.55">0.55</option>
-          </select>
-          <small id="epsilonHelpBlock" class="form-text text-muted">
-            Epsilon only valid for Epsilon-Greedy policy.
-          </small>
-        </div>
-        <div class="col-md-2">
-          <label class="mr-md-2" for="inlineFormCustomSelectStrategy">Strategy</label>
-          <select class="custom-select mr-md-2" id="inlineFormCustomSelectStrategy">
-            <option value="round-robin" selected>Round-Robin</option>
-            <option value="greedy">Greedy</option>
-            <option value="altruist">Altruist</option>
-          </select>
-          <small id="greedHelpBlock" class="form-text text-muted">
-            Choose an allocation strategy. 
-          </small>
-        </div>
-        <div class="col-md-2">
-          <label class="mr-md-2" for="inlineFormCustomSelectOrder">Order</label>
-          <select class="custom-select mr-md-2" id="inlineFormCustomSelectOrder">
-            <option value="best" selected>Best</option>
-            <option value="worst">Worst</option>
-            <option value="random">Random</option>
-          </select>
-          <small id="greedHelpBlock" class="form-text text-muted">
-            Choose an allocation order. 
-          </small>
-        </div>
+        
+        
       </div>
     </div>
     </div>

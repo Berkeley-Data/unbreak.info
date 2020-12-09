@@ -9,7 +9,7 @@ function plotAllocation(policy,greed_factor,ucb_scale,epsilon,strategy,order) {
     var container_height = container_width*0.75;
     
     // set the dimensions and margins of the graph
-    var margin = {top: 60, right: 130, bottom: 50, left: 50},
+    var margin = {top: 10, right: 130, bottom: 50, left: 50},
     width = container_width - margin.left - margin.right,
     height = container_height - margin.top - margin.bottom;
 
@@ -23,7 +23,6 @@ function plotAllocation(policy,greed_factor,ucb_scale,epsilon,strategy,order) {
         "translate(" + margin.left + "," + margin.top + ")");
     var data_url = `${base_url}?policy=${policy}&greed_factor=${greed_factor}&ucb_scale=${ucb_scale}&epsilon=${epsilon}&strategy=${strategy}&order=${order}`
     d3.json(data_url, function(data){
-        console.log(data)
         //////////
         // GENERAL //
         //////////
@@ -45,7 +44,6 @@ function plotAllocation(policy,greed_factor,ucb_scale,epsilon,strategy,order) {
         // taupe green, sun yellow, zeppelin orange, zeppelin brown, deep teal blue, purple
         var color_scheme = ["#A4BB9F","#F5CA34","#F98165","#DEBC97","#76A0F2","#546C8C"]
         var color_scheme_og = d3.schemeCategory10
-        console.log(allocation_data)
 
         var color = d3.scaleOrdinal()
         .domain(model_names)
@@ -127,23 +125,6 @@ function plotAllocation(policy,greed_factor,ucb_scale,epsilon,strategy,order) {
             .attr("d", area)
     
         //////////
-        // HIGHLIGHT GROUP //
-        //////////
-    
-        // What to do when one group is hovered
-        var highlight = function(d){
-            // reduce opacity of all groups
-            d3.selectAll(".myArea").style("opacity", .1)
-            // expect the one that is hovered
-            d3.select("."+d).style("opacity", 1)
-        }
-    
-        // And when it is not hovered anymore
-        var noHighlight = function(d){
-            d3.selectAll(".myArea").style("opacity", 1)
-        }
-    
-        //////////
         // LEGEND //
         //////////
     
@@ -158,8 +139,6 @@ function plotAllocation(policy,greed_factor,ucb_scale,epsilon,strategy,order) {
             .attr("width", size)
             .attr("height", size)
             .style("fill", function(d){ return color(d)})
-            .on("mouseover", highlight)
-            .on("mouseleave", noHighlight)
     
         // Add one dot in the legend for each name.
         svg.selectAll("mylabels")
@@ -173,8 +152,6 @@ function plotAllocation(policy,greed_factor,ucb_scale,epsilon,strategy,order) {
             .text(function(d){ return d})
             .attr("text-anchor", "left")
             .style("alignment-baseline", "middle")
-            .on("mouseover", highlight)
-            .on("mouseleave", noHighlight)
     
     })
 };
@@ -190,7 +167,7 @@ function plotLines(policy,greed_factor,ucb_scale,epsilon,strategy,order) {
     var container_height = container_width*0.75;
     
     // set the dimensions and margins of the graph
-    var margin = {top: 60, right: 130, bottom: 50, left: 50},
+    var margin = {top: 10, right: 130, bottom: 50, left: 50},
     width = container_width - margin.left - margin.right,
     height = container_height - margin.top - margin.bottom;
 
@@ -219,8 +196,8 @@ function plotLines(policy,greed_factor,ucb_scale,epsilon,strategy,order) {
                 reward += data[i][k]["rewards"]
                 regret += data[i][k]["regrets"]
             }
-            reward_data.push({'x':i+1,'y':reward})
-            regret_data.push({'x':i+1,'y':regret})
+            reward_data.push({'x':i+1,'y':data[i][0]['target_reward_sum']})
+            regret_data.push({'x':i+1,'y':data[i][0]['target_regret_sum']})
         }
 
         //////////

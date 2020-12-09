@@ -53,9 +53,13 @@
 }
 
 #plots {
-    margin-bottom: 2em;
+    margin-bottom: 1em;
 }
 
 .bg-dark {
     background-color: #6BB1F3 !important;
+}
+
+.param-info {
+    margin-top: 1em;
 }
