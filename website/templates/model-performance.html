@@ -116,7 +116,7 @@
       </div>
       <div class="row">
         <div class="col"> 
-          <p>Figure 4 shows the model precision performance over time post-October 20th.  We observe that no model consistently outperforms the others. While most models outperform the baseline model, there is no clear better model over all days. For example, we observe Model Strategy 3 with Logistic Regression implementation outperforms other models on October 24th, followed by a sharp underperformance on October 25th. We attribute this to the target voters being an elusive group. Target voters might have certain persistent traits, shifts in the political climate and top-of-mind issues can lead to different sources of hesitancy on any given day particularly on days closer to the election.</p>
+          <p>Figure 4 shows the model precision performance over time post-October 20th.  We observe that no model consistently outperforms the others. While most models outperform the baseline model, there is no clear better model over all days. For example, we observe Model Strategy 3 with Logistic Regression implementation outperforms other models on October 24th, followed by a sharp underperformance on October 25th. We attribute this to the target voters being an elusive group. While, target voters might have certain persistent traits, shifts in the political climate and top-of-mind issues can lead to different sources of hesitancy on any given day particularly on days closer to the election.</p>
           <h3>Recall</h3>
           <p>Model recall is an important evaluation metric given that failing to call actual undecided voters because the model considers them to be decided voters is an acute missed opportunity. This is particularly important in the context of competitive elections where even a small margin of votes may matter and failing to contact enough undecided voters could be consequential. Figure 5 shows the recall metric for each model. All models perform better than baseline. Model recall is consistently above 40% for all models. Model Strategy 4 using XGBoost and Model Strategy 5 using Light GBM are the best performing classifiers with recall above 60%. In particular Model Strategy 4 using XGBoost achieves 68% recall, while baseline is 42%. </p>
         </div>
@@ -162,7 +162,7 @@
           </figure>
           <figure class="figure fig-width-limit">
             <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure8.png')}}" alt="Confusion matrices for Model Strategy 2 - Logistic Regression">
-            <figcaption class="figure-caption text-right"> Figure 7: Confusion matrices for Model Strategy 2 - Logistic Regression</figcaption>
+            <figcaption class="figure-caption text-right"> Figure 8: Confusion matrices for Model Strategy 2 - Logistic Regression</figcaption>
           </figure>
           <figure class="figure fig-width-limit">
             <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure9.png')}}" alt="Confusion matrices for Model Strategy 3 - Logistic Regression">
