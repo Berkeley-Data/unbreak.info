@@ -71,7 +71,7 @@
           <h2>Results</h2>
           <p>Model performance over the implementation period, following October 20th through November 3rd, are presented here. Models are compared to a baseline model, which is based on a stylized logistic regression model using People’s Action filters. We use the Cohen's Kappa metric to measure model prediction agreement with actual outcomes, Matthew’s Correlation Coefficient metrics to measure how well a model predicts true positives and true negatives, precision metric to measure how well a model correctly identifies conflicted voters and a recall metric to measure how well a model does not miss identifying conflicted voters. For simplicity, just the results from the implementation of the best performing algorithm for each model strategy are discussed here.</p>
           <h3>Cohen’s Kappa coefficient</h3>
-          <p>Cohen’s Kappa is used to measure how well the model predictions perform relative to the actual outcomes. It is a statistic typically used to measure inter-rater reliability for qualitative items. It can be thought of as the proportionate agreement of a model predictions with actual results over the expected probabilities of agreement. Figure 1 below shows the Cohen’s Kappa measures for each model. Our models perform better than baseline. Model Strategy 4 using XGBoost and Model Strategy 5 using Light GBM are the best performing classifiers with Cohen’s Kappa greater than 10%.</p>
+          <p>Cohen’s Kappa is used to measure how well the model predictions perform relative to the actual outcomes. It is a statistic typically used to measure inter-rater reliability for qualitative items. It can be thought of as the proportionate agreement of a model predictions with actual results over the expected probabilities of agreement. Figure 1 below shows the Cohen’s Kappa measures for each model. Our models perform better than baseline. Model Strategy 4a using XGBoost and Model Strategy 4b using Light GBM are the best performing classifiers with Cohen’s Kappa greater than 10%.</p>
         </div>
       </div>
       <div class="row">
@@ -85,7 +85,7 @@
       <div class="row">
         <div class="col">
           <h3>Matthew’s Correlation Coefficient</h3>
-          <p>Similar to Cohen’s Kappa, Matthew’s Correlation Coefficient (MCC) is a balanced measure of how well a model predicts True Positives and True Negatives, which is useful in this case when the classes (decided and conflicted voter groups) are of different sizes. The MCC is a correlation coefficient between the observed and predicted binary classifications, returning a value between −1 and +1. A coefficient of +1 represents a perfect prediction, 0 no better than random prediction and −1 indicates total disagreement between prediction and observation. Figure 2 below shows the MCC measures for each model. Our models perform better than baseline. Model Strategy 4 using XGBoost and Model Strategy 5 using Light GBM are the best performing classifiers with MCC greater than 10%.</p>
+          <p>Similar to Cohen’s Kappa, Matthew’s Correlation Coefficient (MCC) is a balanced measure of how well a model predicts True Positives and True Negatives, which is useful in this case when the classes (decided and conflicted voter groups) are of different sizes. The MCC is a correlation coefficient between the observed and predicted binary classifications, returning a value between −1 and +1. A coefficient of +1 represents a perfect prediction, 0 no better than random prediction and −1 indicates total disagreement between prediction and observation. Figure 2 below shows the MCC measures for each model. Our models perform better than baseline. Model Strategy 4a using XGBoost and Model Strategy 4b using Light GBM are the best performing classifiers with MCC greater than 10%.</p>
         </div>
       </div>
       <div class="row">
@@ -99,7 +99,7 @@
       <div class="row">
         <div class="col">
           <h3>Precision</h3>
-          <p>Model precision is an important evaluation metric given the cost of calling. Higher precision signals a higher rate of undecided voters correctly identified. This would mean minimizing false positives or when the model directs the caller to contact a decided voter instead of an undecided voter. Figure 3 shows the model precision metric for each model. All models perform better than baseline. Model precision is consistently above 40% for all models. Model Strategy 4 using XGBoost and Model Strategy 5 using Light GBM are the best performing classifiers with 50% precision.</p>
+          <p>Model precision is an important evaluation metric given the cost of calling. Higher precision signals a higher rate of undecided voters correctly identified. This would mean minimizing false positives or when the model directs the caller to contact a decided voter instead of an undecided voter. Figure 3 shows the model precision metric for each model. All models perform better than baseline. Model precision is consistently above 40% for all models. Model Strategy 4a using XGBoost and Model Strategy 4b using Light GBM are the best performing classifiers with 50% precision.</p>
         </div>
       </div>  
       <div class="row">
@@ -118,7 +118,7 @@
         <div class="col"> 
           <p>Figure 4 shows the model precision performance over time post-October 20th.  We observe that no model consistently outperforms the others. While most models outperform the baseline model, there is no clear better model over all days. For example, we observe Model Strategy 3 with Logistic Regression implementation outperforms other models on October 24th, followed by a sharp underperformance on October 25th. We attribute this to the target voters being an elusive group. While, target voters might have certain persistent traits, shifts in the political climate and top-of-mind issues can lead to different sources of hesitancy on any given day particularly on days closer to the election.</p>
           <h3>Recall</h3>
-          <p>Model recall is an important evaluation metric given that failing to call actual undecided voters because the model considers them to be decided voters is an acute missed opportunity. This is particularly important in the context of competitive elections where even a small margin of votes may matter and failing to contact enough undecided voters could be consequential. Figure 5 shows the recall metric for each model. All models perform better than baseline. Model recall is consistently above 40% for all models. Model Strategy 4 using XGBoost and Model Strategy 5 using Light GBM are the best performing classifiers with recall above 60%. In particular Model Strategy 4 using XGBoost achieves 68% recall, while baseline is 42%. </p>
+          <p>Model recall is an important evaluation metric given that failing to call actual undecided voters because the model considers them to be decided voters is an acute missed opportunity. This is particularly important in the context of competitive elections where even a small margin of votes may matter and failing to contact enough undecided voters could be consequential. Figure 5 shows the recall metric for each model. All models perform better than baseline. Model recall is consistently above 40% for all models. Model Strategy 4a using XGBoost and Model Strategy 4b using Light GBM are the best performing classifiers with recall above 60%. In particular Model Strategy 4a using XGBoost achieves 68% recall, while baseline is 42%. </p>
         </div>
       </div>
       <div class="row">
@@ -150,7 +150,7 @@
           \[PPV = \frac{True\>positives}{True\>positives + False\>positives}\]
           \[NPV = \frac{True\>negatives}{True\>negatives + False\>negatives}\]
           <p>Comparing the confusion matrix performance on the train data to the performance on the test data (post-October 20th) tells us how well the model generalizes or fits to real data in the wild. A model that performs well on the train data, but performs poorly on the test date is said to overfit; whereas a model that performs poorly on the train data is said to be underfit. A comparison of the model’s performance on test data to the baseline model’s performance gives an informative evaluation measure of true performance. Figures 7-11 show the confusion matrix performance for each of the models. </p>
-          <p>Generally, models have higher PPV in the test data as compared to the baseline model. The Model Strategy 4 and Model Strategy 5 implementations notably show much higher PPV in the test data as compared to the baseline model.</p>
+          <p>Generally, models have higher PPV in the test data as compared to the baseline model. The Model Strategy 4a and Model Strategy 4b implementations notably show much higher PPV in the test data as compared to the baseline model.</p>
           <p>The Model Strategy 1 and Model Strategy 2 implementation generalizes well with an improvement in PPV going from the training data to the test data. The other models tend to generalize less well with mostly lower PPV going from training data to test data; however, the level of PPVs on the training data tends to be higher to begin with for the Model Strategies 4 and 5 implementations.</p>
         </div>
       </div>
@@ -169,12 +169,12 @@
             <figcaption class="figure-caption text-right"> Figure 9: Confusion matrices for Model Strategy 3 - Logistic Regression</figcaption>
           </figure>
           <figure class="figure fig-width-limit">
-            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure10.png')}}" alt="Confusion matrices for Model Strategy 4 - XGBoost">
-            <figcaption class="figure-caption text-right"> Figure 10: Confusion matrices for Model Strategy 4 - XGBoost</figcaption>
+            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure10.png')}}" alt="Confusion matrices for Model Strategy 4a - XGBoost">
+            <figcaption class="figure-caption text-right"> Figure 10: Confusion matrices for Model Strategy 4a - XGBoost</figcaption>
           </figure>
           <figure class="figure fig-width-limit">
-            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure11.png')}}" alt="Confusion matrices for Model Strategy 5 - Light GBM">
-            <figcaption class="figure-caption text-right"> Figure 11: Confusion matrices for Model Strategy 5 - Light GBM</figcaption>
+            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure11.png')}}" alt="Confusion matrices for Model Strategy 4b - Light GBM">
+            <figcaption class="figure-caption text-right"> Figure 11: Confusion matrices for Model Strategy 4b - Light GBM</figcaption>
           </figure>
         </div>
       </div>
@@ -188,24 +188,24 @@
       <div class="row">
         <div class="col text-center">  
           <figure class="figure fig-width-limit">
-            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure12.png')}}" alt="Error distribution for Model 1 - Random Forest">
-            <figcaption class="figure-caption text-right"> Figure 12: Error distribution for Model 1 - Random Forest</figcaption>
+            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure12.png')}}" alt="Error distribution for Model Strategy 1 - Random Forest">
+            <figcaption class="figure-caption text-right"> Figure 12: Error distribution for Model Strategy 1 - Random Forest</figcaption>
           </figure>
           <figure class="figure fig-width-limit">
-            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure13.png')}}" alt="Error distribution for Model 2 - Logistic Regression">
-            <figcaption class="figure-caption text-right"> Figure 13: Error distribution for Model 2 - Logistic Regression</figcaption>
+            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure13.png')}}" alt="Error distribution for Model Strategy 2 - Logistic Regression">
+            <figcaption class="figure-caption text-right"> Figure 13: Error distribution for Model Strategy 2 - Logistic Regression</figcaption>
           </figure>
           <figure class="figure fig-width-limit">
-            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure14.png')}}" alt="Error distribution for Model 3 - Logistic Regression">
-            <figcaption class="figure-caption text-right"> Figure 14: Error distribution for Model 3 - Logistic Regression</figcaption>
+            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure14.png')}}" alt="Error distribution for Model Strategy 4 - Logistic Regression">
+            <figcaption class="figure-caption text-right"> Figure 14: Error distribution for Model Strategy 4 - Logistic Regression</figcaption>
           </figure>
           <figure class="figure fig-width-limit">
-            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure15.png')}}" alt="Error distribution for Model 4 - XGBoost">
-            <figcaption class="figure-caption text-right"> Figure 15: Error distribution for Model 4 - XGBoost</figcaption>
+            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure15.png')}}" alt="Error distribution for Model Strategy 4a - XGBoost">
+            <figcaption class="figure-caption text-right"> Figure 15: Error distribution for Model Strategy 4a - XGBoost</figcaption>
           </figure>
           <figure class="figure fig-width-limit">
-            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure16.png')}}" alt="Error distribution for Model 5 - Light GBM">
-            <figcaption class="figure-caption text-right"> Figure 16: Error distribution for Model 5 - Light GBM</figcaption>
+            <img class="figure-img img-fluid" src="{{url_for('static',filename='images/model-performance/figure16.png')}}" alt="Error distribution for Model Strategy 4b - Light GBM">
+            <figcaption class="figure-caption text-right"> Figure 16: Error distribution for Model Strategy 4b - Light GBM</figcaption>
           </figure>
         </div>
       </div>
