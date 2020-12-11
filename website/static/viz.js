@@ -301,12 +301,30 @@ function reDrawCharts(){
         plotLines(selectedPolicy,parseFloat(selectedGreedFactor),null,parseFloat(selectedEpsilon),selectedStrategy,selectedOrder)
     }
 };
+function toggleRelatedParameters(){
+    //get the selected policy
+    var selectedPolicy = getSelection("inlineFormCustomSelectPolicy");
+    if (selectedPolicy == "UCB1") {
+        document.getElementById('inlineFormCustomSelectUCBScale').disabled = true;
+        document.getElementById('inlineFormCustomSelectEpsilon').disabled = true;
 
+    }
+    else if (selectedPolicy == "Bayes_UCB") {
+        document.getElementById('inlineFormCustomSelectUCBScale').disabled = false;
+        document.getElementById('inlineFormCustomSelectEpsilon').disabled = true;
+    }
+    else if (selectedPolicy == "epsilon_greedy") {
+        document.getElementById('inlineFormCustomSelectUCBScale').disabled = true;
+        document.getElementById('inlineFormCustomSelectEpsilon').disabled = false;
+    }
+}
 
+toggleRelatedParameters();
 plotAllocation("UCB1",1,null,null,"round-robin","best")
 plotLines("UCB1",1,null,null,"round-robin","best")
 
 document.getElementById('inlineFormCustomSelectPolicy').addEventListener('change',function(){
+    toggleRelatedParameters();
     reDrawCharts();
 });
 document.getElementById('inlineFormCustomSelectGreedFactor').addEventListener('change',function(){
