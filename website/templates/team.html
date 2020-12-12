@@ -1,133 +1,334 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Unbreak.info</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Unbreak.info - Team</title>
     <!-- Load CSS files -->
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
     <!-- Project CSS File -->
-    <link rel="stylesheet" href="{{url_for('static',filename='main.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='main.css')}}" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-234WGQ1VPH"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-234WGQ1VPH");
+    </script>
   </head>
   <body>
-    <img src="{{url_for('static',filename='images/bg.svg')}}" id="bg" alt="Background Image">
+    <img
+      src="{{url_for('static',filename='images/bg.svg')}}"
+      id="bg"
+      alt="Background Image"
+    />
     <!-- Navigation Menu-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="{{url_for('index')}}">Unbreak.info</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Software
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Software
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{{url_for('software',sub_page='tech-overview')}}">Overview</a>
-              <a class="dropdown-item" href="{{url_for('software',sub_page='demo')}}">Demo</a>
-              <a class="dropdown-item" href="{{url_for('software',sub_page='docs')}}">Documentation</a>
+              <a
+                class="dropdown-item"
+                href="{{url_for('software',sub_page='tech-overview')}}"
+                >Overview</a
+              >
+              <a
+                class="dropdown-item"
+                href="{{url_for('software',sub_page='demo')}}"
+                >Demo</a
+              >
+              <a
+                class="dropdown-item"
+                href="{{url_for('software',sub_page='docs')}}"
+                >Documentation</a
+              >
             </div>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
               Case Study
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{{url_for('case_study',sub_page='overview')}}">Overview</a>
-              <a class="dropdown-item" href="{{url_for('case_study',sub_page='model-strategy')}}">Modeling Strategy</a>
-              <a class="dropdown-item" href="{{url_for('case_study',sub_page='model-performance')}}">Model Performance</a>
+              <a
+                class="dropdown-item"
+                href="{{url_for('case_study',sub_page='overview')}}"
+                >Overview</a
+              >
+              <a
+                class="dropdown-item"
+                href="{{url_for('case_study',sub_page='model-strategy')}}"
+                >Modeling Strategy</a
+              >
+              <a
+                class="dropdown-item"
+                href="{{url_for('case_study',sub_page='model-performance')}}"
+                >Model Performance</a
+              >
             </div>
           </li>
-            <a class="nav-item nav-link" href="{{url_for('team')}}">Team</a>
+          <a class="nav-item nav-link" href="{{url_for('team')}}">Team</a>
         </div>
       </div>
     </nav>
     <div id="main-container" class="container align-items-center">
       <h1 class="text-center">Team</h1>
-      <div class='row'>
+      <div class="row">
         <div class="col-md-3 col-sm-6 text-center">
           <div class="row">
             <div class="col text-center">
-              <img class="img-fluid img-profile" src="{{url_for('static',filename='images/team/kevin.png')}}" alt="Picture of Kevin Hartman">
+              <img
+                class="img-fluid img-profile"
+                src="{{url_for('static',filename='images/team/kevin.png')}}"
+                alt="Picture of Kevin Hartman"
+              />
               <p><strong>Kevin Hartman</strong></p>
             </div>
           </div>
           <div class="row justify-content-center">
             <ul class="list-inline">
-              <li class="list-inline-item"><a href="https://www.linkedin.com/public-profile/in/kevin-hartman-"><img class="img-fluid logo-mini" src="{{url_for('static',filename='images/team/linkedin.svg')}}"></a></li>
-              <li class="list-inline-item"><a href="https://github.com/kevin-hartman"><img class="img-fluid logo-mini" src="{{url_for('static',filename='images/team/github.svg')}}"></a></li>
-              <li class="list-inline-item"><a href="https://kevin-hartman.io/"><img class="img-fluid logo-mini" src="{{url_for('static',filename='images/team/globe.svg')}}"></a></li>
-              <li class="list-inline-item"><a href="https://twitter.com/kevin_hartman_"><img class="img-fluid logo-mini" src="{{url_for('static',filename='images/team/twitter.svg')}}"></a></li>
-              <li class="list-inline-item"><a href="mailto:kevin.hartman@berkeley.edu"><img class="img-fluid logo-mini" src="{{url_for('static',filename='images/team/email.svg')}}"></a></li>
+              <li class="list-inline-item">
+                <a
+                  href="https://www.linkedin.com/public-profile/in/kevin-hartman-"
+                  ><img
+                    class="img-fluid logo-mini"
+                    src="{{url_for('static',filename='images/team/linkedin.svg')}}"
+                /></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://github.com/kevin-hartman"
+                  ><img
+                    class="img-fluid logo-mini"
+                    src="{{url_for('static',filename='images/team/github.svg')}}"
+                /></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://kevin-hartman.io/"
+                  ><img
+                    class="img-fluid logo-mini"
+                    src="{{url_for('static',filename='images/team/globe.svg')}}"
+                /></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://twitter.com/kevin_hartman_"
+                  ><img
+                    class="img-fluid logo-mini"
+                    src="{{url_for('static',filename='images/team/twitter.svg')}}"
+                /></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="mailto:kevin.hartman@berkeley.edu"
+                  ><img
+                    class="img-fluid logo-mini"
+                    src="{{url_for('static',filename='images/team/email.svg')}}"
+                /></a>
+              </li>
             </ul>
           </div>
         </div>
         <div class="col-md-3 col-sm-6 text-center">
           <div class="row">
             <div class="col text-center">
-              <img class="img-fluid img-profile" src="{{url_for('static',filename='images/team/nick.png')}}" alt="Picture of Nick Sylva">
+              <img
+                class="img-fluid img-profile"
+                src="{{url_for('static',filename='images/team/nick.png')}}"
+                alt="Picture of Nick Sylva"
+              />
               <p><strong>Nick Sylva</strong></p>
             </div>
           </div>
           <div class="row justify-content-center">
             <ul class="list-inline">
-              <li class="list-inline-item"><a href="https://linkedin.com/in/nsylva"><img class="img-fluid logo-mini" src="{{url_for('static',filename='images/team/linkedin.svg')}}"></a></li>
-            
-              <li class="list-inline-item"><a href="https://github.com/nsylva"><img class="img-fluid logo-mini" src="{{url_for('static',filename='images/team/github.svg')}}"></a></li>
-            
-              <li class="list-inline-item"><a href="http://nicksylva.com"><img class="img-fluid logo-mini" src="{{url_for('static',filename='images/team/globe.svg')}}"></a></li>
-            
-              <li class="list-inline-item"><a href="https://twitter.com/normalfeed"><img class="img-fluid logo-mini" src="{{url_for('static',filename='images/team/twitter.svg')}}"></a></li>
-            
-              <li class="list-inline-item"><a href="mailto:nick.sylva@berkeley.edu"><img class="img-fluid logo-mini" src="{{url_for('static',filename='images/team/email.svg')}}"></a></li>
+              <li class="list-inline-item">
+                <a href="https://linkedin.com/in/nsylva"
+                  ><img
+                    class="img-fluid logo-mini"
+                    src="{{url_for('static',filename='images/team/linkedin.svg')}}"
+                /></a>
+              </li>
+
+              <li class="list-inline-item">
+                <a href="https://github.com/nsylva"
+                  ><img
+                    class="img-fluid logo-mini"
+                    src="{{url_for('static',filename='images/team/github.svg')}}"
+                /></a>
+              </li>
+
+              <li class="list-inline-item">
+                <a href="http://nicksylva.com"
+                  ><img
+                    class="img-fluid logo-mini"
+                    src="{{url_for('static',filename='images/team/globe.svg')}}"
+                /></a>
+              </li>
+
+              <li class="list-inline-item">
+                <a href="https://twitter.com/normalfeed"
+                  ><img
+                    class="img-fluid logo-mini"
+                    src="{{url_for('static',filename='images/team/twitter.svg')}}"
+                /></a>
+              </li>
+
+              <li class="list-inline-item">
+                <a href="mailto:nick.sylva@berkeley.edu"
+                  ><img
+                    class="img-fluid logo-mini"
+                    src="{{url_for('static',filename='images/team/email.svg')}}"
+                /></a>
+              </li>
             </ul>
           </div>
         </div>
         <div class="col-md-3 col-sm-6 text-center">
           <div class="row">
             <div class="col text-center">
-              <img class="img-fluid img-profile" src="{{url_for('static',filename='images/team/daniel.png')}}" alt="Picture of Daniel Alvarez">
+              <img
+                class="img-fluid img-profile"
+                src="{{url_for('static',filename='images/team/daniel.png')}}"
+                alt="Picture of Daniel Alvarez"
+              />
               <p><strong>Daniel Alvarez</strong></p>
             </div>
           </div>
           <div class="row justify-content-center">
             <ul class="list-inline">
-              <li class="list-inline-item"><a href="https://www.linkedin.com/in/daniel---alvarez/"><img class="img-fluid logo-mini" src="{{url_for('static',filename='images/team/linkedin.svg')}}"></a></li>
-            
-              <li class="list-inline-item"><a href="https://github.com/dalvarez83"><img class="img-fluid logo-mini" src="{{url_for('static',filename='images/team/github.svg')}}"></a></li>
-            
-              <li class="list-inline-item"><a href="https://twitter.com/dalvarezmas"><img class="img-fluid logo-mini" src="{{url_for('static',filename='images/team/twitter.svg')}}"></a></li>
-            
-              <li class="list-inline-item"><a href="mailto:daniel.alvarez83@berkeley.edu"><img class="img-fluid logo-mini" src="{{url_for('static',filename='images/team/email.svg')}}"></a></li>
+              <li class="list-inline-item">
+                <a href="https://www.linkedin.com/in/daniel---alvarez/"
+                  ><img
+                    class="img-fluid logo-mini"
+                    src="{{url_for('static',filename='images/team/linkedin.svg')}}"
+                /></a>
+              </li>
+
+              <li class="list-inline-item">
+                <a href="https://github.com/dalvarez83"
+                  ><img
+                    class="img-fluid logo-mini"
+                    src="{{url_for('static',filename='images/team/github.svg')}}"
+                /></a>
+              </li>
+
+              <li class="list-inline-item">
+                <a href="https://twitter.com/dalvarezmas"
+                  ><img
+                    class="img-fluid logo-mini"
+                    src="{{url_for('static',filename='images/team/twitter.svg')}}"
+                /></a>
+              </li>
+
+              <li class="list-inline-item">
+                <a href="mailto:daniel.alvarez83@berkeley.edu"
+                  ><img
+                    class="img-fluid logo-mini"
+                    src="{{url_for('static',filename='images/team/email.svg')}}"
+                /></a>
+              </li>
             </ul>
           </div>
         </div>
         <div class="col-md-3 col-sm-6 text-center">
           <div class="row">
             <div class="col text-center">
-              <img class="img-fluid img-profile" src="{{url_for('static',filename='images/team/katie.png')}}" alt="Picture of Katie Mo">
+              <img
+                class="img-fluid img-profile"
+                src="{{url_for('static',filename='images/team/katie.png')}}"
+                alt="Picture of Katie Mo"
+              />
               <p><strong>Katie Mo</strong></p>
             </div>
           </div>
           <div class="row justify-content-center">
             <ul class="list-inline">
-              <li class="list-inline-item"><a href="https://www.linkedin.com/in/katie-mo/"><img class="img-fluid logo-mini" src="{{url_for('static',filename='images/team/linkedin.svg')}}"></a></li>
-            
-              <li class="list-inline-item"><a href="https://github.com/katieymo"><img class="img-fluid logo-mini" src="{{url_for('static',filename='images/team/github.svg')}}"></a></li>
-            
-              <li class="list-inline-item"><a href="mailto:kmo@berkeley.edu"><img class="img-fluid logo-mini" src="{{url_for('static',filename='images/team/email.svg')}}"></a></li>
+              <li class="list-inline-item">
+                <a href="https://www.linkedin.com/in/katie-mo/"
+                  ><img
+                    class="img-fluid logo-mini"
+                    src="{{url_for('static',filename='images/team/linkedin.svg')}}"
+                /></a>
+              </li>
+
+              <li class="list-inline-item">
+                <a href="https://github.com/katieymo"
+                  ><img
+                    class="img-fluid logo-mini"
+                    src="{{url_for('static',filename='images/team/github.svg')}}"
+                /></a>
+              </li>
+
+              <li class="list-inline-item">
+                <a href="mailto:kmo@berkeley.edu"
+                  ><img
+                    class="img-fluid logo-mini"
+                    src="{{url_for('static',filename='images/team/email.svg')}}"
+                /></a>
+              </li>
             </ul>
           </div>
         </div>
       </div>
-      
     </div>
-  <!-- Load Javascript -->
-  <!-- Bootstrap Related -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <!-- Load Javascript -->
+    <!-- Bootstrap Related -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
