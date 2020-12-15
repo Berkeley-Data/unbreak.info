@@ -1,6 +1,7 @@
 #main-container {
     max-width: 80%;
     height: 100%;
+    padding-top: 56px;
 }
 
 .banner {

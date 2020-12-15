@@ -29,84 +29,86 @@
       alt="Background Image"
     />
     <!-- Navigation Menu-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="{{url_for('index')}}">Unbreak.info</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Software
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{{url_for('index')}}">Unbreak.info</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <li class="nav-item dropdown">
               <a
-                class="dropdown-item"
-                href="{{url_for('software',sub_page='tech-overview')}}"
-                >Overview</a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
               >
+                Software
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a
+                  class="dropdown-item"
+                  href="{{url_for('software',sub_page='tech-overview')}}"
+                  >Overview</a
+                >
+                <a
+                  class="dropdown-item"
+                  href="{{url_for('software',sub_page='demo')}}"
+                  >Demo</a
+                >
+                <a
+                  class="dropdown-item"
+                  href="{{url_for('software',sub_page='docs')}}"
+                  >Documentation</a
+                >
+              </div>
+            </li>
+            <li class="nav-item dropdown">
               <a
-                class="dropdown-item"
-                href="{{url_for('software',sub_page='demo')}}"
-                >Demo</a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
               >
-              <a
-                class="dropdown-item"
-                href="{{url_for('software',sub_page='docs')}}"
-                >Documentation</a
-              >
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Case Study
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a
-                class="dropdown-item"
-                href="{{url_for('case_study',sub_page='overview')}}"
-                >Overview</a
-              >
-              <a
-                class="dropdown-item"
-                href="{{url_for('case_study',sub_page='model-strategy')}}"
-                >Modeling Strategy</a
-              >
-              <a
-                class="dropdown-item"
-                href="{{url_for('case_study',sub_page='model-performance')}}"
-                >Model Performance</a
-              >
-            </div>
-          </li>
-          <a class="nav-item nav-link" href="{{url_for('team')}}">Team</a>
+                Case Study
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a
+                  class="dropdown-item"
+                  href="{{url_for('case_study',sub_page='overview')}}"
+                  >Overview</a
+                >
+                <a
+                  class="dropdown-item"
+                  href="{{url_for('case_study',sub_page='model-strategy')}}"
+                  >Modeling Strategy</a
+                >
+                <a
+                  class="dropdown-item"
+                  href="{{url_for('case_study',sub_page='model-performance')}}"
+                  >Model Performance</a
+                >
+              </div>
+            </li>
+            <a class="nav-item nav-link" href="{{url_for('team')}}">Team</a>
+          </div>
         </div>
-      </div>
+    </div>
     </nav>
     <div id="main-container" class="container align-items-center">
       <h1 class="text-center">Team</h1>
