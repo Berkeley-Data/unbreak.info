@@ -1,9 +1,6 @@
 # unbreak.info
 
-This repository consists of 
-
-1. A [notebook](model_error_analysis.ipynb) that describes the error analysis for each of the conflicted voter models developed by our strategy methodology
-2. Source code for our public website at [unbreak.info](https://unbreak.info)
+This repository contains the source code for our project website,[unbreak.info](https://unbreak.info).
 
 For futher information:
 
