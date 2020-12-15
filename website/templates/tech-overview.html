@@ -104,12 +104,17 @@
                   href="{{url_for('case_study',sub_page='model-performance')}}"
                   >Model Performance</a
                 >
+                <a
+                  class="dropdown-item"
+                  href="{{url_for('case_study',sub_page='data-engineering')}}"
+                  >Data Engineering</a
+                >
               </div>
             </li>
             <a class="nav-item nav-link" href="{{url_for('team')}}">Team</a>
           </div>
         </div>
-    </div>
+      </div>
     </nav>
     <div id="main-container" class="container">
       <h1 class="text-center">DARTS Technical Overview</h1>
@@ -157,7 +162,9 @@
               Dictates how many targets to select in the next round based on
               prior results.
             </li>
-            <li>Under the hood, it’s a <a href="#mab">multi-armed bandit</a></li>
+            <li>
+              Under the hood, it’s a <a href="#mab">multi-armed bandit</a>
+            </li>
           </ul>
         </li>
         <li>

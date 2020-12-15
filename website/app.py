@@ -31,7 +31,8 @@ def case_study(sub_page):
         return render_template("model-strategy.html")
     elif sub_page == 'model-performance':
         return render_template("model-performance.html")
-        #return render_template("case-study.html")
+    elif sub_page == 'data-engineering':
+        return render_template("data-engineering.html")
     else:   
         return render_template("case-study.html")
 

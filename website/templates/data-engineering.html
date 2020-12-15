@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Unbreak.info - Case Study</title>
+    <title>Unbreak.info- Case Study Data Engineering</title>
     <!-- Load CSS files -->
     <!-- Bootstrap -->
     <link
@@ -115,15 +115,66 @@
         </div>
       </div>
     </nav>
-    <div id="main-container" class="container-fluid">
-      <div id="content-container" class="container-fluid">
-        <div class="row">
-          <div class="col-md-6">
-            <h1>Product</h1>
-          </div>
-          <div class="col-md-6">
-            <h1>Case Study</h1>
-          </div>
+    <div id="main-container" class="container">
+      <h1 class="text-center">Data Engineering</h1>
+      <h2>Data Flow Pillars</h2>
+      <div class="row">
+        <div class="col">
+          <p>
+            To build our solution we designed three main data flow pillars.
+            First we have a data ingestion pipeline. In this part of the process
+            we clean, dedupe and homogenize the raw data into a consistent
+            format. Then we match records to a voter file using a custom scoring
+            algorithm. Finally, we deliver clean, feature-enriched data suitable
+            for EDA, model building and other downstream tasks.
+          </p>
+          <p>
+            In the model building portion of the pipeline we performed data
+            analysis and implemented models described by our
+            <a href="{{url_for('case_study',sub_page='model-strategy')}}"
+              >model strategies</a
+            >. We also leveraged this part of the pipeline to construct a
+            pre-scored 40M record set that includes the probabilities and binary
+            outcomes from our best models.
+          </p>
+          <p>
+            The third and final process is our allocation and distribution
+            mechanism described by
+            <a href="{{url_for('software',sub_page='tech-overview')}}">DARTS</a>
+            that assigns targets based on recent online updates. This part of
+            the process leverages the same pipeline infrastructure we use for
+            ingestion, but instead of delivering files for modeling, we update
+            our pre-scored file with daily information on canvassing results and
+            other statistics needed for target pool allocations.
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col text-center">
+          <figure class="figure">
+            <img
+              class="figure-img img-fluid"
+              src="{{url_for('static',filename='images/data-engineering/pipeline.png')}}"
+              alt="Image depicting data engineering pipeline"
+            />
+            <figcaption class="figure-caption text-right">
+              Figure 1: The Data Flow Process
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+      <h2>Sources and Components</h2>
+      <div class="row">
+        <div class="col">
+          <p>
+            Our source data is housed in two primary platforms: Thrutalk and
+            Civis. Much of our source data is pushed to us through Redshift
+            queries and jobs that are scheduled on these platforms. The files
+            are transferred through transient S3 buckets to our own staging
+            areas using automation scripts developed in Zapier. The heavy
+            lifting portion of our pipeline utilizes Amazon EMR. SageMaker is
+            used for EDA, feature engineering and model building.
+          </p>
         </div>
       </div>
     </div>
