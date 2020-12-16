@@ -1,7 +1,7 @@
 #main-container {
     max-width: 80%;
     height: 100%;
-    padding-top: 56px;
+    padding-top: 66px;
 }
 
 .banner {
@@ -67,4 +67,9 @@
 
 .param-info {
     margin-top: 1em;
+}
+
+.brand-logo {
+    height:40px;
+    padding-top: 5px;
 }
