@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 import json
+
 with open('static/data/simulations_for_demo.json','r') as f:
     json_data = json.load(f)
 app = Flask(__name__)
@@ -62,6 +63,12 @@ def data():
 @app.route("/team")
 def team():
     return render_template("team.html")
+  
+# route to preview page. 
+@app.route("/preview")
+def preview():
+    return render_template("card.html")
+
 
 if __name__ == '__main__':
     app.run()

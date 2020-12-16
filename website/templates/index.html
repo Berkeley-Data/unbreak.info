@@ -3,6 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+    <meta property="og:title" content="Communication Unbreakdown" />
+    <meta
+      property="og:image"
+      content="https://unbreak.info/static/images/communication_unbreakdown_zeppelin_white.png"
+    />
+    <meta
+      property="og:description"
+      content="Communication Unbreakdown helps community organizers reach target populations for civic engagement."
+    />
+    <meta property="og:url" content="https:/unbreak.info/templates/card.html" />
+
     <title>Unbreak.info</title>
     <!-- Load CSS files -->
     <!-- Bootstrap -->
@@ -31,7 +42,11 @@
     <!-- Navigation Menu-->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{{url_for('index')}}"><img class="brand-logo" src="{{url_for('static',filename='images/unbreak.png')}}"></a>
+        <a class="navbar-brand" href="{{url_for('index')}}"
+          ><img
+            class="brand-logo"
+            src="{{url_for('static',filename='images/unbreak.png')}}"
+        /></a>
         <button
           class="navbar-toggler"
           type="button"
