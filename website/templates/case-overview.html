@@ -31,7 +31,11 @@
     <!-- Navigation Menu-->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{{url_for('index')}}"><img class="brand-logo" src="{{url_for('static',filename='images/unbreak.png')}}"></a>
+        <a class="navbar-brand" href="{{url_for('index')}}"
+          ><img
+            class="brand-logo"
+            src="{{url_for('static',filename='images/unbreak.png')}}"
+        /></a>
         <button
           class="navbar-toggler"
           type="button"
@@ -184,17 +188,21 @@
         <div class="col">
           <p>
             A daily list of voters and their phone numbers is prepared each
-            night which allows thousands of Deep Canvass conversations to be
-            held each day by the volunteer call team. This list is fed into a
-            phone bank system. The result of these Deep Canvass conversations -
-            the pre-score and post-score responses - are recorded and
-            transmitted after the calls are complete into a data pipeline for
-            processing. The responses are matched, scored, and fed into our
-            Dynamic and Responsive Targeting System, or DARTS. DARTS maintains
-            tracking on its various machine learning models used for prediction.
-            The system allocates the next round of calls based on which model is
-            performing best, enabling flexibility as the political winds shift
-            with the minds of the undecided voter.
+            night which allows thousands of
+            <a
+              href="https://www.getthru.io/blog/how-to-do-deep-canvassing-with-phone-banks-and-texting"
+              >Deep Canvass</a
+            >
+            conversations to be held each day by the volunteer call team. This
+            list is fed into a phone bank system. The result of these Deep
+            Canvass conversations - the pre-score and post-score responses - are
+            recorded and transmitted after the calls are complete into a data
+            pipeline for processing. The responses are matched, scored, and fed
+            into our Dynamic and Responsive Targeting System, or DARTS. DARTS
+            maintains tracking on its various machine learning models used for
+            prediction. The system allocates the next round of calls based on
+            which model is performing best, enabling flexibility as the
+            political winds shift with the minds of the undecided voter.
           </p>
         </div>
       </div>
